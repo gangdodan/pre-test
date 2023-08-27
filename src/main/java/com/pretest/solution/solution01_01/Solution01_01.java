@@ -60,10 +60,9 @@ class CategoryNode {
         categoryMap.put(categoryId, new Category(categoryId, categoryName));
     }
 
-    public void addRelationship(int parentCategoryId, int childCategoryId) {
-        Category parent = categoryMap.get(parentCategoryId);
-        Category child = categoryMap.get(childCategoryId);
-
+    public void addRelation(int parentId, int childId) {
+        Category parent = categoryMap.get(parentId);
+        Category child = categoryMap.get(childId);
 
         if (parent != null && child != null && isChildPresent(parent, child)) {
             parent.addChild(child);
@@ -113,18 +112,18 @@ public class Solution01_01 {
         categoryTree.addCategory(13, "로제");
 
         //부모,자식 관계 추가
-        categoryTree.addRelationship(1, 3);
-        categoryTree.addRelationship(1, 4);
-        categoryTree.addRelationship(2, 5);
-        categoryTree.addRelationship(3, 9);
-        categoryTree.addRelationship(3, 7);
-        categoryTree.addRelationship(3, 8);
-        categoryTree.addRelationship(4, 10);
-        categoryTree.addRelationship(4, 9);
-        categoryTree.addRelationship(4, 11);
-        categoryTree.addRelationship(5, 12);
-        categoryTree.addRelationship(5, 12);
-        categoryTree.addRelationship(5, 13);
+        categoryTree.addRelation(1, 3);
+        categoryTree.addRelation(1, 4);
+        categoryTree.addRelation(2, 5);
+        categoryTree.addRelation(3, 9);
+        categoryTree.addRelation(3, 7);
+        categoryTree.addRelation(3, 8);
+        categoryTree.addRelation(4, 10);
+        categoryTree.addRelation(4, 9);
+        categoryTree.addRelation(4, 11);
+        categoryTree.addRelation(5, 12);
+        categoryTree.addRelation(5, 12);
+        categoryTree.addRelation(5, 13);
 
         //카테고리 조회
         Category categoryById = categoryTree.getCategoryById(1);
@@ -135,11 +134,11 @@ public class Solution01_01 {
     }
 
     private static String toJson(Category category) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         if (category != null) {
-            return objectMapper.writeValueAsString(category);
+            return mapper.writeValueAsString(category);
         } else {
             return "검색 결과가 없습니다.";
         }
