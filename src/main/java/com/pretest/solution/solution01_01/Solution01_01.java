@@ -49,10 +49,10 @@ class Category {
     }
 }
 
-class CategoryTree {
+class CategoryNode {
     private Map<Integer, Category> categoryMap;
 
-    public CategoryTree() {
+    public CategoryNode() {
         categoryMap = new HashMap<>();
     }
 
@@ -95,7 +95,7 @@ class CategoryTree {
 
 public class Solution01_01 {
     public static void main(String[] args) throws JsonProcessingException {
-        CategoryTree categoryTree = new CategoryTree();
+        CategoryNode categoryTree = new CategoryNode();
 
         //카테고리 생성
         categoryTree.addCategory(1, "남자");
