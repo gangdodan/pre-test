@@ -1,4 +1,4 @@
-package com.pretest.solution02;
+package com.pretest.solution.solution02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
